@@ -14,7 +14,7 @@ h = hashlib.new('sha256')
 
 # get saved local feeds
 try:
-  feeds_df=pd.read_csv("feeds.csv").drop(columns=['Unnamed: 0'])
+  feeds_df=pd.read_csv("downloads/feeds.csv").drop(columns=['Unnamed: 0'])
 except:
   feeds_df=pd.DataFrame(columns=['hash','feed','published','title','link'])
 
@@ -40,6 +40,6 @@ for feed_source in feed_urls.keys():
 # remove duplicates
 feeds_df.drop_duplicates(subset=['hash'],inplace=True, ignore_index=True)
 # update saved local feeds
-feeds_df.to_csv('feeds.csv')
+feeds_df.to_csv('downloads/feeds.csv')
 
 feeds_df
